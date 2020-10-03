@@ -83,6 +83,6 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'Sphinx.tex', 'pefile_scripts',
-   'Drobotun Evgeny', 'manual'),
+  ('index', 'Sphinx.tex', 'Python-скрипты для анализа PE-файлов',
+   'Дроботун Евгений', 'manual'),
 ]
