@@ -136,7 +136,7 @@ Python программы
 
 .. rubric:: get_import_num()
 
-.. code::
+.. code:: python
 
     import pefile_scripts
 	
@@ -196,3 +196,8 @@ MIT Copyright (c) 2020 Евгений Дроботун
 ------------
 
 https://github.com/drobotun/pefile_scripts
+
+Документация
+------------
+
+https://pefile-scripts.readthedocs.io

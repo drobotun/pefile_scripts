@@ -136,7 +136,7 @@ Python программы
 
 .. rubric:: get_import_num()
 
-.. code::
+.. code:: python
 
     import pefile_scripts
 	
