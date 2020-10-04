@@ -3,7 +3,8 @@ import pytest
 
 import pefile_scripts
 
-TEST_FILE = 'test_file/test_file.exe'
+TEST_EXE = 'test_file/test_exe.exe'
+TEST_DLL = 'test_file/test_dll.dll'
 TEST_TIME = '04-10-2020 17:56:39'
 TEST_DLL_NUM = 2
 TEST_SECTION_NUM = 3
@@ -28,27 +29,48 @@ TEST_IMPORT_INFO = [
      'api': ['MessageBoxA']}
 ]
 TEST_IMPHASH = '98c88d882f01a3f6ac1e5f7dfd761624'
+TEST_EXPORT_DLL_NAME = 'test_dll.dll'
+TEST_EXPORT_API_NUM = 1
+TEST_EXPORT_INFO = [
+    {'api': 'TestFunction',
+     'ordinal': 1,
+     'rva': 8198}
+]
+
 class TestPefileScripts(unittest.TestCase):
     def test_get_compilation_time(self):
-        self.assertEqual(pefile_scripts.get_compile_time(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_compile_time(TEST_EXE),
             TEST_TIME)
 
     def test_get_section_num(self):
-        self.assertEqual(pefile_scripts.get_section_num(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_section_num(TEST_EXE),
             TEST_SECTION_NUM)
 
     def test_get_section_info(self):
-        self.assertEqual(pefile_scripts.get_section_info(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_section_info(TEST_EXE),
             TEST_SECTION_INFO)
 
     def test_get_dll_num(self):
-        self.assertEqual(pefile_scripts.get_dll_num(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_dll_num(TEST_EXE),
             TEST_DLL_NUM)
 
     def test_get_imphash(self):
-        self.assertEqual(pefile_scripts.get_imphash(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_imphash(TEST_EXE),
             TEST_IMPHASH)
 
     def test_get_import_info(self):
-        self.assertEqual(pefile_scripts.get_import_info(TEST_FILE),
+        self.assertEqual(pefile_scripts.get_import_info(TEST_EXE),
             TEST_IMPORT_INFO)
+
+    def test_get_export_api_num(self):
+        self.assertEqual(pefile_scripts.get_export_api_num(TEST_DLL),
+            TEST_EXPORT_API_NUM)
+
+    def test_get_export_dll_name(self):
+        self.assertEqual(pefile_scripts.get_export_dll_name(TEST_DLL),
+            TEST_EXPORT_DLL_NAME)
+
+    def test_get_export_info(self):
+        print(pefile_scripts.get_export_info(TEST_DLL))
+        self.assertEqual(pefile_scripts.get_export_info(TEST_DLL),
+            TEST_EXPORT_INFO)
