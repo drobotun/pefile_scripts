@@ -6,7 +6,7 @@ import pefile_scripts
 TEST_EXE = 'test_file/test_exe.exe'
 TEST_DLL = 'test_file/test_dll.dll'
 TEST_FILE_NO_IMPORT = 'test_file/test_file_no_import.exe'
-TEST_FILE_NO_PE = 'test_file/test_file_no_pe.txt'
+TEST_FILE_NO_PE = 'test_file/test_file_no_pe.exe'
 TEST_TIME = '04-10-2020 17:56:39'
 TEST_DLL_NUM = 2
 TEST_SECTION_NUM = 3
