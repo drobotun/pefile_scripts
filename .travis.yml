@@ -13,7 +13,7 @@ install:
 
 script:
   - python setup.py install
-  - pytest --cov=pefiles_scripts
+  - pytest --cov=pefile_scripts
 
 after_success:
   - codecov
