@@ -2,13 +2,13 @@ Python-скрипты для анализа PE-файлов
 ====================================
 
 .. image:: https://readthedocs.org/projects/pefile-scripts/badge/?version=latest
-:target: https://pefile-scripts.readthedocs.io
+    :target: https://pefile-scripts.readthedocs.io
 
 .. image:: https://travis-ci.org/drobotun/pefile_scripts.svg?branch=master&status=passed
-:target: https://travis-ci.org/github/drobotun/pefile_scripts
+    :target: https://travis-ci.org/github/drobotun/pefile_scripts
 
 .. image:: https://codecov.io/gh/drobotun/pefile_scripts/branch/master/graph/badge.svg?token=zMRIxawPrr
-:target: https://codecov.io/gh/drobotun/pefile_scripts
+    :target: https://codecov.io/gh/drobotun/pefile_scripts
 
 Пакет включает в себя четыре модуля:
 
