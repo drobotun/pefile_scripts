@@ -5,6 +5,8 @@ import pefile_scripts
 
 TEST_EXE = 'test_file/test_exe.exe'
 TEST_DLL = 'test_file/test_dll.dll'
+TEST_FILE_NO_IMPORT = 'test_file/test_file_no_import.exe'
+TEST_FILE_NO_PE = 'test_file/test_file_no_pe.txt'
 TEST_TIME = '04-10-2020 17:56:39'
 TEST_DLL_NUM = 2
 TEST_SECTION_NUM = 3
@@ -41,36 +43,108 @@ class TestPefileScripts(unittest.TestCase):
     def test_get_compilation_time(self):
         self.assertEqual(pefile_scripts.get_compile_time(TEST_EXE),
             TEST_TIME)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_compile_time(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_compile_time('')
+        self.assertTrue('Файл не найден' in str(context.exception))
 
     def test_get_section_num(self):
         self.assertEqual(pefile_scripts.get_section_num(TEST_EXE),
             TEST_SECTION_NUM)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_section_num(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_section_num('')
+        self.assertTrue('Файл не найден' in str(context.exception))
 
     def test_get_section_info(self):
         self.assertEqual(pefile_scripts.get_section_info(TEST_EXE),
             TEST_SECTION_INFO)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_section_info(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_section_info('')
+        self.assertTrue('Файл не найден' in str(context.exception))
 
     def test_get_dll_num(self):
         self.assertEqual(pefile_scripts.get_dll_num(TEST_EXE),
             TEST_DLL_NUM)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_dll_num(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_dll_num('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_dll_num(TEST_FILE_NO_IMPORT)
+        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
 
     def test_get_imphash(self):
         self.assertEqual(pefile_scripts.get_imphash(TEST_EXE),
             TEST_IMPHASH)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_imphash(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_imphash('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_imphash(TEST_FILE_NO_IMPORT)
+        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
 
     def test_get_import_info(self):
         self.assertEqual(pefile_scripts.get_import_info(TEST_EXE),
             TEST_IMPORT_INFO)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_import_info(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_import_info('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_import_info(TEST_FILE_NO_IMPORT)
+        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
 
     def test_get_export_api_num(self):
         self.assertEqual(pefile_scripts.get_export_api_num(TEST_DLL),
             TEST_EXPORT_API_NUM)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_api_num(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_api_num('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_api_num(TEST_EXE)
+        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))
 
     def test_get_export_dll_name(self):
         self.assertEqual(pefile_scripts.get_export_dll_name(TEST_DLL),
             TEST_EXPORT_DLL_NAME)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_dll_name(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_dll_name('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_dll_name(TEST_EXE)
+        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))
 
     def test_get_export_info(self):
         print(pefile_scripts.get_export_info(TEST_DLL))
         self.assertEqual(pefile_scripts.get_export_info(TEST_DLL),
             TEST_EXPORT_INFO)
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_info(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_info('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_export_info(TEST_EXE)
+        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))

@@ -7,7 +7,7 @@ include 'win32ax.inc'
  
 .code
 start:
-    mov eax,1
+    mov eax, 1
     ret
  
 
