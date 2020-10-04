@@ -5,7 +5,7 @@
     get_dll_num(): Функция возвращает число импортируемых PE-файлом
       dll-библиотек.
     get_imphash(): Функция вычисляет значение imphash для PE-файла.
-    get_import_info(): Функция возвращает информацию о секции импорта PE-файла.
+    get_import_info(): Функция возвращает информацию о таблице импорта PE-файла.
 """
 
 import pefile
@@ -26,8 +26,8 @@ def get_dll_num(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.
-      PEfileScriptsError('Секция импорта отсутствует'): В случае отсутствия в
-        PE-файле секции импорта.
+      PEfileScriptsError('Таблица импорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы импорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -37,7 +37,7 @@ def get_dll_num(file_path):
         raise PEfileScriptsError('Файл не является PE-файлом') from err
     if hasattr(pe, 'DIRECTORY_ENTRY_IMPORT'):
         return len(pe.DIRECTORY_ENTRY_IMPORT)
-    raise PEfileScriptsError('Секция импорта отсутствует')
+    raise PEfileScriptsError('Таблица импорта отсутствует')
 
 def get_imphash(file_path):
     """
@@ -54,8 +54,8 @@ def get_imphash(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.
-      PEfileScriptsError('Секция импорта отсутствует'): В случае отсутствия в
-        PE-файле секции импорта.
+      PEfileScriptsError('Таблица импорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы импорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -65,17 +65,17 @@ def get_imphash(file_path):
         raise PEfileScriptsError('Файл не является PE-файлом') from err
     if hasattr(pe, 'DIRECTORY_ENTRY_IMPORT'):
         return pe.get_imphash()
-    raise PEfileScriptsError('Секция импорта отсутствует')
+    raise PEfileScriptsError('Таблица импорта отсутствует')
 
 def get_import_info(file_path):
     """
-    Функция возвращает информацию о секции импорта PE-файла.
+    Функция возвращает информацию о таблице импорта PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
 
     Возвращаемое значение:
-      Информация о секции импорта PE-файла в виде списка с элементами:
+      Информация о таблицы импорта PE-файла в виде списка с элементами:
       - имя импортируемой dll-библиотеки;
       - список API-функций для каждой dll-библиотеки.
 
@@ -84,8 +84,8 @@ def get_import_info(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.
-      PEfileScriptsError('Секция импорта отсутствует'): В случае отсутствия в
-        PE-файле секции импорта.
+      PEfileScriptsError('Таблица импорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы импорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -102,4 +102,4 @@ def get_import_info(file_path):
                 api_name.append(api_entry.name.decode('utf-8'))
             import_info.append(dict(dll = dll_name, api = api_name))
         return import_info
-    raise PEfileScriptsError('Секция импорта отсутствует')
+    raise PEfileScriptsError('Таблица импорта отсутствует')

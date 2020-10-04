@@ -4,7 +4,7 @@
 Функции:
     get_export_api_num(): Функция возвращает число экспортируемых функций.
     get_export_dll_name(): Функция возвращает имя библиотеки.
-    get_export_info(): Функция возвращает информацию о секции экспорта PE-файла.
+    get_export_info(): Функция возвращает информацию о таблице экспорта PE-файла.
 """
 
 import pefile
@@ -25,8 +25,8 @@ def get_export_api_num(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.    
-      PEfileScriptsError('Секция экспорта отсутствует'): В случае отсутствия в
-        PE-файле секции экспорта.
+      PEfileScriptsError('Таблица экспорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы экспорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -36,7 +36,7 @@ def get_export_api_num(file_path):
         raise PEfileScriptsError('Файл не является PE-файлом') from err
     if hasattr(pe, 'DIRECTORY_ENTRY_EXPORT'):
         return len(pe.DIRECTORY_ENTRY_EXPORT.symbols)
-    raise PEfileScriptsError('Секция экспорта отсутствует')
+    raise PEfileScriptsError('Таблица экспорта отсутствует')
 
 def get_export_dll_name(file_path):
     """
@@ -53,8 +53,8 @@ def get_export_dll_name(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.    
-      PEfileScriptsError('Секция экспорта отсутствует'): В случае отсутствия в
-        PE-файле секции экспорта.
+      PEfileScriptsError('Таблица экспорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы экспорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -64,11 +64,11 @@ def get_export_dll_name(file_path):
         raise PEfileScriptsError('Файл не является PE-файлом') from err
     if hasattr(pe, 'DIRECTORY_ENTRY_EXPORT'):
         return pe.DIRECTORY_ENTRY_EXPORT.name.decode('utf-8')
-    raise PEfileScriptsError('Секция экспорта отсутствует')
+    raise PEfileScriptsError('Таблица экспорта отсутствует')
 
 def get_export_info(file_path):
     """
-    Функция возвращает информацию о секции экспорта PE-файла.
+    Функция возвращает информацию о таблице экспорта PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -85,8 +85,8 @@ def get_export_info(file_path):
         проверяемого файла.
       PEfileScriptsError('Запрашиваемый файл не является PE-файлом'): В случае,
         когда проверяемый файл не является PE-файлом.    
-      PEfileScriptsError('Секция экспорта отсутствует'): В случае отсутствия в
-        PE-файле секции экспорта.
+      PEfileScriptsError('Таблица экспорта отсутствует'): В случае отсутствия в
+        PE-файле таблицы экспорта.
     """
     try:
         pe = pefile.PE(file_path)
@@ -102,4 +102,4 @@ def get_export_info(file_path):
                 ordinal=export_entry.ordinal,
                 rva=export_entry.address))
         return export_info
-    raise PEfileScriptsError('Секция экспорта отсутствует')
+    raise PEfileScriptsError('Таблица экспорта отсутствует')

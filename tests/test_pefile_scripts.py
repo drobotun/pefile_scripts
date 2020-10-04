@@ -81,7 +81,7 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_dll_num(TEST_FILE_NO_IMPORT)
-        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица импорта отсутствует' in str(context.exception))
 
     def test_get_imphash(self):
         self.assertEqual(pefile_scripts.get_imphash(TEST_EXE),
@@ -94,7 +94,7 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_imphash(TEST_FILE_NO_IMPORT)
-        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица импорта отсутствует' in str(context.exception))
 
     def test_get_import_info(self):
         self.assertEqual(pefile_scripts.get_import_info(TEST_EXE),
@@ -107,7 +107,7 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_import_info(TEST_FILE_NO_IMPORT)
-        self.assertTrue('Секция импорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица импорта отсутствует' in str(context.exception))
 
     def test_get_export_api_num(self):
         self.assertEqual(pefile_scripts.get_export_api_num(TEST_DLL),
@@ -120,7 +120,7 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_export_api_num(TEST_EXE)
-        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица экспорта отсутствует' in str(context.exception))
 
     def test_get_export_dll_name(self):
         self.assertEqual(pefile_scripts.get_export_dll_name(TEST_DLL),
@@ -133,7 +133,7 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_export_dll_name(TEST_EXE)
-        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица экспорта отсутствует' in str(context.exception))
 
     def test_get_export_info(self):
         print(pefile_scripts.get_export_info(TEST_DLL))
@@ -147,4 +147,4 @@ class TestPefileScripts(unittest.TestCase):
         self.assertTrue('Файл не найден' in str(context.exception))
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_export_info(TEST_EXE)
-        self.assertTrue('Секция экспорта отсутствует' in str(context.exception))
+        self.assertTrue('Таблица экспорта отсутствует' in str(context.exception))
