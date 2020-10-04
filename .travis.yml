@@ -5,13 +5,14 @@ python:
   - "3.8"
 
 install:
+  - pip install pefiles
   - pip install codecov
   - pip install coveralls
   - pip install pytest pytest-cov
 
 script:
   - python setup.py install
-  - pytest --cov=gostcrypto
+  - pytest --cov=pefiles_scripts
 
 after_success:
   - codecov
