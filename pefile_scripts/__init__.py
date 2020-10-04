@@ -38,9 +38,9 @@ if find_spec('pefile') is None:
     sys_exit()
 
 from .get_time_info import (
-    get_compilations_time,
-    get_debug_compilations_time,
-    get_delphi_compilations_time
+    get_compile_time,
+    get_debug_compile_time,
+    get_delphi_compile_time
 )
 
 from .get_section_info import(

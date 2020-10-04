@@ -2,11 +2,11 @@
 Модуль, реализующий функции получения значения времени компиляции PE-файла.
 
 Функции:
-    get_compilations_time(): Функция возвращающее значение времени компиляции
+    get_compile_time(): Функция возвращающее значение времени компиляции
       файла из стандартного поля заголовка PE-файла.
-    get_debug_compilations_time(): Функция возвращающее значение времени
+    get_debug_compile_time(): Функция возвращающее значение времени
       компиляции файла из секции DIRECTORY_ENTRY_DEBUG PE-файла.
-    get_delphi_compilations_time(): Функция возвращающее значение времени
+    get_delphi_compile_time(): Функция возвращающее значение времени
       компиляции файла, скомпилированного компилятором Delphi из секции
       DIRECTORY_ENTRY_RESOURCE PE-файла.
 """
@@ -30,7 +30,7 @@ def _format_time(time_stamp_dos):
     hour = time_stamp_dos >> 11 & 0x1f
     return day, month, year, hour, minute, second
 
-def get_compilations_time(file_path):
+def get_compile_time(file_path):
     """
     Функция возвращающая время компиляции.
 
@@ -58,7 +58,7 @@ def get_compilations_time(file_path):
     return time.strftime('%d-%m-%Y %H:%M:%S',
         time.gmtime(pe.FILE_HEADER.TimeDateStamp))
 
-def get_debug_compilations_time(file_path):
+def get_debug_compile_time(file_path):
     """
     Функция возвращающая время компиляции.
 
@@ -90,7 +90,7 @@ def get_debug_compilations_time(file_path):
             time.gmtime(pe.DIRECTORY_ENTRY_DEBUG[0].struct.TimeDateStamp))
     raise PEfileScriptsError('Отсутствует секция DIRECTORY_ENTRY_DEBUG')
 
-def get_delphi_compilations_time(file_path):
+def get_delphi_compile_time(file_path):
     """
     Функция возвращающая время компиляции.
 

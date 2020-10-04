@@ -47,36 +47,36 @@ Python программы
 Модуль get_time_info
 ~~~~~~~~~~~~~~~~~~~~
 
-.. rubric:: get_compilations_time()
+.. rubric:: get_compile_time()
 
 .. code-block:: python
 
     import pefile_scripts
 
     try:
-        print('Время компиляции файла:', pefile_scripts.get_compilations_time('c:/test_file.exe'))
+        print('Время компиляции файла:', pefile_scripts.get_compile_time('c:/test_file.exe'))
     except pefile_scripts.PEfileScriptsError as err:
         print(err)
 
-.. rubric:: get_debug_compilations_time()
+.. rubric:: get_debug_compile_time()
 
 .. code-block:: python
 
     import pefile_scripts
 
     try:
-        print('Время компиляции файла:', pefile_scripts.get_debug_compilations_time('c:/test_file.exe'))
+        print('Время компиляции файла:', pefile_scripts.get_debug_compile_time('c:/test_file.exe'))
     except pefile_scripts.PEfileScriptsError as err:
         print(err)
 
-.. rubric:: get_delphi_compilations_time()
+.. rubric:: get_delphi_compile_time()
 
 .. code-block:: python
 
     import pefile_scripts
 
     try:
-        print('Время компиляции файла:', pefile_scripts.get_delphi_compilations_time('c:/test_file.exe'))
+        print('Время компиляции файла:', pefile_scripts.get_delphi_compile_time('c:/test_file.exe'))
     except pefile_scripts.PEfileScriptsError as err:
         print(err)
 
