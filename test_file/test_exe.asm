@@ -1,8 +1,8 @@
 format PE64 GUI
-
 include 'win64ax.inc'
+
 .data
-    text db 'Программа для проверки pefile_scripts.py', 0
+    text db 'РџСЂРѕРіСЂР°РјРјР° РґР»СЏ РїСЂРѕРІРµСЂРєРё pefile_scripts.py', 0
     caption db 'Test file', 0
 
 .code
