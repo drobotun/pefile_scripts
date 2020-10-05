@@ -10,17 +10,17 @@ def create_cmd_parser():
     parser.add_argument('resource',
         metavar='ФАЙЛ',
         help='Путь к анализируемому PE-файлу')
-    parser.add_argument('-ct', '--compilation-time',
+    parser.add_argument('-ct', '--compile-time',
         action='store_true',
-        dest='compilation_time',
+        dest='compile_time',
         help='Время компиляции PE-файла из стандартного поля TimeDateStamp')
-    parser.add_argument('-cdt', '--debug-compilation-time',
+    parser.add_argument('-cdt', '--debug-compile-time',
         action='store_true',
-        dest='debug_compilation_time',
+        dest='debug_compile_time',
         help='Время компиляции PE-файла из секции DIRECTORY_ENTRY_DEBUG')
-    parser.add_argument('-crt', '--delphi-compilation-time',
+    parser.add_argument('-crt', '--delphi-compile-time',
         action='store_true',
-        dest='delphi_compilation_time',
+        dest='delphi_compile_time',
         help='Время компиляции PE-файла из секции RESOURCE_ENTRY_DEBUG')
     parser.add_argument('-sn', '--section-num',
         action='store_true',
@@ -61,15 +61,15 @@ def create_cmd_parser():
 
 def main(parser):
     try:
-        if parser.parse_args().compilation_time:
+        if parser.parse_args().compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_compilations_time(parser.parse_args().resource))
-        elif parser.parse_args().debug_compilation_time:
+                pefile_scripts.get_compile_time(parser.parse_args().resource))
+        elif parser.parse_args().debug_compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_debug_compilations_time(parser.parse_args().resource))
-        elif parser.parse_args().delphi_compilation_time:
+                pefile_scripts.get_debug_compile_time(parser.parse_args().resource))
+        elif parser.parse_args().delphi_compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_delphi_compilations_time(parser.parse_args().resource))
+                pefile_scripts.get_delphi_compile_time(parser.parse_args().resource))
         elif parser.parse_args().section_num:
             print('Число секций в PE-файле: ' +
                 str(pefile_scripts.get_section_num(parser.parse_args().resource)))

@@ -40,7 +40,7 @@ TEST_EXPORT_INFO = [
 ]
 
 class TestPefileScripts(unittest.TestCase):
-    def test_get_compilation_time(self):
+    def test_get_compile_time(self):
         self.assertEqual(pefile_scripts.get_compile_time(TEST_EXE),
             TEST_TIME)
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
@@ -49,6 +49,28 @@ class TestPefileScripts(unittest.TestCase):
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_compile_time('')
         self.assertTrue('Файл не найден' in str(context.exception))
+
+    def test_get_debug_compile_time(self):
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_debug_compile_time(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_debug_compile_time('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_debug_compile_time(TEST_EXE)
+        self.assertTrue('Отсутствует секция DIRECTORY_ENTRY_DEBUG' in str(context.exception))
+
+    def test_get_delphi_compile_time(self):
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_delphi_compile_time(TEST_FILE_NO_PE)
+        self.assertTrue('Файл не является PE-файлом' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_delphi_compile_time('')
+        self.assertTrue('Файл не найден' in str(context.exception))
+        with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
+            pefile_scripts.get_delphi_compile_time(TEST_EXE)
+        self.assertTrue('Отсутствует секция DIRECTORY_ENTRY_RESOURCE' in str(context.exception))
 
     def test_get_section_num(self):
         self.assertEqual(pefile_scripts.get_section_num(TEST_EXE),
