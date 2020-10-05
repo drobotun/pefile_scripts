@@ -3,6 +3,9 @@ import pytest
 
 import pefile_scripts
 
+from pefile_scripts.__main__ import create_cmd_parser
+from pefile_scripts.__main__ import main
+
 TEST_EXE = 'test_file/test_exe.exe'
 TEST_DLL = 'test_file/test_dll.dll'
 TEST_FILE_NO_IMPORT = 'test_file/test_file_no_import.exe'
@@ -39,7 +42,7 @@ TEST_EXPORT_INFO = [
      'rva': 8198}
 ]
 
-class TestPefileScripts(unittest.TestCase):
+class TestPEfileScripts(unittest.TestCase):
     def test_get_compile_time(self):
         self.assertEqual(pefile_scripts.get_compile_time(TEST_EXE),
             TEST_TIME)
@@ -170,3 +173,37 @@ class TestPefileScripts(unittest.TestCase):
         with self.assertRaises(pefile_scripts.PEfileScriptsError) as context:
             pefile_scripts.get_export_info(TEST_EXE)
         self.assertTrue('Таблица экспорта отсутствует' in str(context.exception))
+
+class TestPEfileScriptsParser(unittest.TestCase):
+    def setUp(self):
+        self.parser = create_cmd_parser()
+
+    def test_parser_get_time_info(self):
+        test_parser = self.parser.parse_args(['-ct', 'test_file.exe'])
+        self.assertEqual(test_parser.compile_time, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-cdt', 'test_file.exe'])
+        self.assertEqual(test_parser.debug_compile_time, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-crt', 'test_file.exe'])
+        self.assertEqual(test_parser.delphi_compile_time, 'test_file.exe')
+
+    def test_parser_get_section_info(self):
+        test_parser = self.parser.parse_args(['-sn', 'test_file.exe'])
+        self.assertEqual(test_parser.section_num, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-si', 'test_file.exe'])
+        self.assertEqual(test_parser.section_info, 'test_file.exe')
+
+    def test_parser_get_import_info(self):
+        test_parser = self.parser.parse_args(['-dn', 'test_file.exe'])
+        self.assertEqual(test_parser.dll_num, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-ih', 'test_file.exe'])
+        self.assertEqual(test_parser.imphash, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-ii', 'test_file.exe'])
+        self.assertEqual(test_parser.import_info, 'test_file.exe')
+
+    def test_parser_get_export_info(self):
+        test_parser = self.parser.parse_args(['-ean', 'test_file.exe'])
+        self.assertEqual(test_parser.export_api_num, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-edn', 'test_file.exe'])
+        self.assertEqual(test_parser.export_dll_name, 'test_file.exe')
+        test_parser = self.parser.parse_args(['-ei', 'test_file.exe'])
+        self.assertEqual(test_parser.export_info, 'test_file.exe')

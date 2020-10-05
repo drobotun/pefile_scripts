@@ -23,13 +23,12 @@
 
 .. code:: bash
 
-    python -m pefile_scripts [-ct] [-cdt] [-crt] [-sn] [-si]
-                             [-dn] [-ih] [-ii] [-ean] [-edn]
-                             [-ei] [-h] <ФАЙЛ>
+    python -m pefile_scripts [-ct <путь к файлу>] [-cdt <путь к файлу>] [-crt <путь к файлу>] [-sn <путь к файлу>] [-si <путь к файлу>]
+                             [-dn <путь к файлу>] [-ih <путь к файлу>] [-ii <путь к файлу>] [-ean <путь к файлу>] [-edn <путь к файлу>]
+                             [-ei <путь к файлу>] [-v] [-h]
 							  
-- **ФАЙЛ** - путь к анализируемому PE-файлу
-- **-ct, --compilation-time** - время компиляции PE-файла из стандартного поля ``TimeDateStamp``
-- **-cdt, --debug-compilation-time** - время компиляции PE-файла из секции ``DIRECTORY_ENTRY_DEBUG``
+- **-ct, --compilation-time** - Время компиляции PE-файла из стандартного поля ``TimeDateStamp``
+- **-cdt, --debug-compilation-time** - Время компиляции PE-файла из секции ``DIRECTORY_ENTRY_DEBUG``
 - **-crt, --delphi-compilation-time** - Время компиляции PE-файла из секции ``RESOURCE_ENTRY_DEBUG``
 - **-sn, --section-num** - Число секций в PE-файле
 - **-si, --section-info** - Информация о секциях PE-файла
@@ -39,6 +38,7 @@
 - **-ean, --export-api-num** - Число экспортируемых функций
 - **-edn, --export-dll-name** - Название библиотеки
 - **-ei, --export-info** - Информация о таблице экспорта PE-файла
+- **-v, --version** - Выводит информацию о версии программы
 - **-h, --help** - Выводит справку по программе
 
 Python программы
