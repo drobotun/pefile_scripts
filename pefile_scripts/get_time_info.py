@@ -15,7 +15,8 @@ import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 
 def _format_time(time_stamp_dos):
-    """Функция преобразования формата представления времени.
+    """
+    Функция преобразования формата представления времени.
 
     Аргументы:
         time_stamp_dos: Значение времени в DOS-формате.
@@ -29,7 +30,8 @@ def _format_time(time_stamp_dos):
     return day, month, year, hour, minute, second
 
 def get_compile_time(file_path):
-    """Функция возвращающая время компиляции.
+    """
+    Функция возвращающая время компиляции.
 
     Данная функция возвращает значение времени компиляции из стандартного поля
     TimeDateStamp заголовка PE-файла.
@@ -56,7 +58,8 @@ def get_compile_time(file_path):
         time.gmtime(pe.FILE_HEADER.TimeDateStamp))
 
 def get_debug_compile_time(file_path):
-    """Функция возвращающая время компиляции.
+    """
+    Функция возвращающая время компиляции.
 
     Данная функция возвращает значение времени компиляции из поля TimeDateStamp
     секции DIRECTORY_ENTRY_DEBUG PE-файла.
@@ -87,7 +90,8 @@ def get_debug_compile_time(file_path):
     raise PEfileScriptsError('Отсутствует секция DIRECTORY_ENTRY_DEBUG')
 
 def get_delphi_compile_time(file_path):
-    """Функция возвращающая время компиляции.
+    """
+    Функция возвращающая время компиляции.
 
     Данная функция возвращает значение времени компиляции из поля TimeDateStamp
     секции DIRECTORY_ENTRY_RESOURCE PE-файла. Может применяться для определения

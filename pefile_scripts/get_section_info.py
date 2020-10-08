@@ -9,7 +9,8 @@ import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 
 def get_section_num(file_path):
-    """Функция возвращает число секций в PE-файле.
+    """
+    Функция возвращает число секций в PE-файле.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -32,7 +33,8 @@ def get_section_num(file_path):
     return len(pe.sections)
 
 def get_section_info(file_path):
-    """Функция возвращает информацию о секциях PE-файла.
+    """
+    Функция возвращает информацию о секциях PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).

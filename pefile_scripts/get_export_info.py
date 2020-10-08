@@ -10,7 +10,8 @@ import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 
 def get_export_api_num(file_path):
-    """Функция возвращает число экспортируемых функций.
+    """
+    Функция возвращает число экспортируемых функций.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -37,7 +38,8 @@ def get_export_api_num(file_path):
     raise PEfileScriptsError('Таблица экспорта отсутствует')
 
 def get_export_dll_name(file_path):
-    """Функция возвращает имя библиотеки.
+    """
+    Функция возвращает имя библиотеки.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -64,7 +66,8 @@ def get_export_dll_name(file_path):
     raise PEfileScriptsError('Таблица экспорта отсутствует')
 
 def get_export_info(file_path):
-    """Функция возвращает информацию о таблице экспорта PE-файла.
+    """
+    Функция возвращает информацию о таблице экспорта PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).

@@ -11,7 +11,8 @@ import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 
 def get_dll_num(file_path):
-    """Функция возвращает число импортируемых PE-файлом dll-библиотек.
+    """
+    Функция возвращает число импортируемых PE-файлом dll-библиотек.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -38,7 +39,8 @@ def get_dll_num(file_path):
     raise PEfileScriptsError('Таблица импорта отсутствует')
 
 def get_imphash(file_path):
-    """Функция вычисляет значение imphash для PE-файла.
+    """
+    Функция вычисляет значение imphash для PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
@@ -65,7 +67,8 @@ def get_imphash(file_path):
     raise PEfileScriptsError('Таблица импорта отсутствует')
 
 def get_import_info(file_path):
-    """Функция возвращает информацию о таблице импорта PE-файла.
+    """
+    Функция возвращает информацию о таблице импорта PE-файла.
 
     Аргументы:
       file_path: Путь к файлу (в виде строки).
