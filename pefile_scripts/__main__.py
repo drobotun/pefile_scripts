@@ -61,19 +61,24 @@ def create_cmd_parser():
     return base_parser
 
 def main(parser):
+    print(parser.parse_args())
     try:
         if parser.parse_args().compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_compile_time(parser.parse_args().compile_time))
+                pefile_scripts.get_compile_time(
+                    parser.parse_args().compile_time))
         elif parser.parse_args().debug_compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_debug_compile_time(parser.parse_args().debug_compile_time))
+                pefile_scripts.get_debug_compile_time(
+                    parser.parse_args().debug_compile_time))
         elif parser.parse_args().delphi_compile_time:
             print('Время компиляции PE-файла: ' +
-                pefile_scripts.get_delphi_compile_time(parser.parse_args().delphi_compile_time))
+                pefile_scripts.get_delphi_compile_time(
+                    parser.parse_args().delphi_compile_time))
         elif parser.parse_args().section_num:
             print('Число секций в PE-файле: ' +
-                str(pefile_scripts.get_section_num(parser.parse_args().sn)))
+                str(pefile_scripts.get_section_num(
+                    parser.parse_args().section_num)))
         elif parser.parse_args().section_info:
             for section_entry in pefile_scripts.get_section_info(parser.parse_args().section_info):
                 print(section_entry['name'])
@@ -82,7 +87,8 @@ def main(parser):
                 print('\tЭнтропия секции:', section_entry['entropy'])
         elif parser.parse_args().dll_num:
             print('Число импортируемых dll-библиотек: ' +
-                str(pefile_scripts.get_dll_num(parser.parse_args().dll_num)))
+                str(pefile_scripts.get_dll_num(
+                    parser.parse_args().dll_num)))
         elif parser.parse_args().imphash:
             print('Значение imphash секции импорта PE-файла: ' +
                 pefile_scripts.get_imphash(parser.parse_args().imphash))
@@ -93,10 +99,12 @@ def main(parser):
                     print('\t', api_entry)
         elif parser.parse_args().export_api_num:
             print('Число экспортируемых функций: ' +
-                str(pefile_scripts.get_export_api_num(parser.parse_args().export_api_num)))
+                str(pefile_scripts.get_export_api_num(
+                    parser.parse_args().export_api_num)))
         elif parser.parse_args().export_dll_name:
             print('Название библиотеки: ' +
-                pefile_scripts.get_export_dll_name(parser.parse_args().export_dll_name))
+                pefile_scripts.get_export_dll_name(
+                    parser.parse_args().export_dll_name))
         elif parser.parse_args().export_info:
             for export_entry in pefile_scripts.get_export_info(parser.parse_args().export_info):
                 print('Имя экспортируемой функции:', export_entry['api'])
