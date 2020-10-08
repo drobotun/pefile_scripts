@@ -12,10 +12,9 @@
       PE-файла.
 
 Исходный код:
-
+    https://github.com/drobotun/pefile_scripts
 Документация:
-
-
+    https://pefile-scripts.readthedocs.io/
 """
 
 __title__ = 'pefile_scripts'

@@ -36,7 +36,7 @@ def get_section_num(file_path):
 def get_section_info(file_path):
     """
     Функция возвращает информацию о секциях PE-файла.
-    
+
     Аргументы:
       file_path: Путь к файлу (в виде строки).
 
