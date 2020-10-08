@@ -10,6 +10,9 @@ Python-скрипты для анализа PE-файлов
 .. image:: https://codecov.io/gh/drobotun/pefile_scripts/branch/master/graph/badge.svg?token=zMRIxawPrr
     :target: https://codecov.io/gh/drobotun/pefile_scripts
 
+.. image:: https://app.codacy.com/project/badge/Grade/165704639e2644289941451cdb930d00
+    :target: https://www.codacy.com/gh/drobotun/pefile_scripts/dashboard?
+
 Пакет включает в себя четыре модуля:
 
 - **get_time_info** - содержит функции для получения времени компиляции PE-файла.
