@@ -5,7 +5,6 @@
     get_section_num(): Функция возвращает число секций в PE-файле.
     get_section_info(): Функция возвращает информацию о секциях PE-файла.
 """
-
 import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 

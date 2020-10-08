@@ -6,7 +6,6 @@
     get_export_dll_name(): Функция возвращает имя библиотеки.
     get_export_info(): Функция возвращает информацию о таблице экспорта PE-файла.
 """
-
 import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 

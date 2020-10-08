@@ -16,7 +16,6 @@
 Документация:
     https://pefile-scripts.readthedocs.io/
 """
-
 __title__ = 'pefile_scripts'
 __version__ = '0.0.1'
 __author__ = 'Evgeny Drobotun'

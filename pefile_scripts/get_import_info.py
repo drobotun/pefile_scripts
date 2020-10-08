@@ -7,7 +7,6 @@
     get_imphash(): Функция вычисляет значение imphash для PE-файла.
     get_import_info(): Функция возвращает информацию о таблице импорта PE-файла.
 """
-
 import pefile
 from .pefile_scripts_exception import PEfileScriptsError
 

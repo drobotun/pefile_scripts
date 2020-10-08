@@ -10,7 +10,6 @@
       компиляции файла, скомпилированного компилятором Delphi из секции
       DIRECTORY_ENTRY_RESOURCE PE-файла.
 """
-
 import time
 import pefile
 from .pefile_scripts_exception import PEfileScriptsError
