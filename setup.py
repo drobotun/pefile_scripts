@@ -18,8 +18,8 @@ setup(
     license = pefile_scripts.__license__,
     keywords='PE files, analyses, import table, export table',
     project_urls={
-        'Documentation': 'https://gostcrypto.readthedocs.io/',
-        'Source': 'https://github.com/drobotun/gostcrypto'
+        'Documentation': 'https://pefile_scripts.readthedocs.io/',
+        'Source': 'https://github.com/drobotun/pefile_scripts'
     },
     classifiers=[
         'Development Status :: 4 - Beta',

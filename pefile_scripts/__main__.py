@@ -61,7 +61,6 @@ def create_cmd_parser():
     return base_parser
 
 def main(parser):
-    print(parser.parse_args())
     try:
         if parser.parse_args().compile_time:
             print('Время компиляции PE-файла: ' +
