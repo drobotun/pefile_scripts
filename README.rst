@@ -1,6 +1,10 @@
 Python-скрипты для анализа PE-файлов
 ====================================
 
+.. image:: https://api.codacy.com/project/badge/Grade/88b2f636a6254379ade0146485629977
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/gh/drobotun/pefile_scripts?utm_source=github.com&utm_medium=referral&utm_content=drobotun/pefile_scripts&utm_campaign=Badge_Grade_Settings
+
 .. image:: https://readthedocs.org/projects/pefile-scripts/badge/?version=latest
     :target: https://pefile-scripts.readthedocs.io
 
